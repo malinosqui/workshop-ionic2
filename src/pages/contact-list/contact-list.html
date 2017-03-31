@@ -1,0 +1,51 @@
+<!--
+  Generated template for the ContactList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Lista de contatos</ion-title>
+    <ion-buttons end *ngIf="isWeb">
+      <button ion-button (click)="goToForm()">
+        NOVO
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-searchbar placeholder="Digite o nome para pesquisar"></ion-searchbar>
+  <ion-list>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-badge item-right color="success">ATIVO</ion-badge>
+        <ion-icon name="ios-arrow-forward" item-right></ion-icon>
+        <ion-avatar item-left>
+          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
+        </ion-avatar>
+        <h2>João Paulo</h2>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger">
+        <ion-icon name="trash"></ion-icon>
+        Remover
+      </button>
+        <button ion-button color="secondary" (click)="goToForm()">
+        <ion-icon name="create"></ion-icon>
+        Editar
+      </button>
+        <button ion-button color="primary" (click)="goToDetail()">
+        <ion-icon name="eye"></ion-icon>
+        Visualizar
+      </button>
+      </ion-item-options>
+    </ion-item-sliding>
+    <!--<ion-item class="img-container">
+      <img src="assets/phone-book.svg" alt="">
+      <h4>Nenhum contato cadastrado.</h4>
+    </ion-item>-->
+  </ion-list>
+</ion-content>

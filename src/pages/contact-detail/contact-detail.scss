@@ -1,0 +1,19 @@
+page-contact-detail {
+  .header-image {
+    background-image: url('../assets/header-img.png');
+    height: 40vh;
+  }
+  .main-content {
+    width: 100vw;
+    background-color: white;
+  }
+  .img-item {
+    text-align: center;
+    img {
+      margin-top: 20px;
+      border-radius: 50%;
+      border: 4px solid #41506B;
+      width: 140px;
+    }
+  }
+}
