@@ -19,7 +19,7 @@
 <ion-content>
   <ion-list>
     <ion-item class="img-item">
-      <img src="assets/placeholder-user.png" alt="Foto de perfil">
+      <img [src]="contact.avatar || 'assets/placeholder-user.png'" alt="Foto de perfil">
       <button ion-button clear>Adicionar foto</button>
     </ion-item>
     <ion-item>
@@ -32,7 +32,7 @@
     </ion-item>
     <ion-item>
       <ion-label stacked>Telefone</ion-label>
-      <ion-input type="tel" [(ngModel)]="contact.number"></ion-input>
+      <ion-input type="tel" [(ngModel)]="contact.phone"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label stacked>Data de nascimento</ion-label>

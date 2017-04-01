@@ -17,6 +17,7 @@ import { ContactProvider } from '../../providers/contact-provider';
 })
 export class ContactListPage {
   isWeb: Boolean = false;
+  contacts: Array<Object> = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public platform: Platform, public networkProvider: NetworkProvider,
@@ -31,7 +32,13 @@ export class ContactListPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactListPage');
+    this.contactProvider.getRemote().then((contacts: Array<any>) => {
+      this.contacts = contacts;
+    });
+  }
+
+  sync() {
+
   }
 
   goToForm(contact) {

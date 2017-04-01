@@ -12,9 +12,11 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact-detail.html'
 })
 export class ContactDetailPage {
-  contact: any = { name: 'João Paulo', email: 'joao@a.com', number: '(14) 99211-9227', birthDate: '1995-12-30' };
+  contact: Object = {};
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.contact = this.navParams.get('contact');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactDetailPage');

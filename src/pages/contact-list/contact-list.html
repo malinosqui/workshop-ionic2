@@ -17,35 +17,37 @@
 
 
 <ion-content>
-  <ion-searchbar placeholder="Digite o nome para pesquisar"></ion-searchbar>
+  <ion-searchbar placeholder="Digite o nome para pesquisar" *ngIf="contacts.length > 0" ></ion-searchbar>
   <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let contact of contacts">
       <ion-item>
-        <ion-badge item-right color="success">ATIVO</ion-badge>
+        <ion-badge item-right color="success" *ngIf="contact.active">ATIVO</ion-badge>
+        <ion-badge item-right color="danger" *ngIf="!contact.active">INATIVO</ion-badge>
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>
         <ion-avatar item-left>
-          <img src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg">
+          <img [src]="contact.avatar">
         </ion-avatar>
-        <h2>João Paulo</h2>
+        <h2>{{contact.name}}</h2>
+        <h3>{{contact.email}}</h3>
       </ion-item>
       <ion-item-options side="right">
         <button ion-button color="danger">
         <ion-icon name="trash"></ion-icon>
         Remover
       </button>
-        <button ion-button color="secondary" (click)="goToForm()">
+        <button ion-button color="secondary" (click)="goToForm(contact)">
         <ion-icon name="create"></ion-icon>
         Editar
       </button>
-        <button ion-button color="primary" (click)="goToDetail()">
+        <button ion-button color="primary" (click)="goToDetail(contact)">
         <ion-icon name="eye"></ion-icon>
         Visualizar
       </button>
       </ion-item-options>
     </ion-item-sliding>
-    <!--<ion-item class="img-container">
+    <ion-item class="img-container" *ngIf="contacts.length <= 0">
       <img src="assets/phone-book.svg" alt="">
       <h4>Nenhum contato cadastrado.</h4>
-    </ion-item>-->
+    </ion-item>
   </ion-list>
 </ion-content>
