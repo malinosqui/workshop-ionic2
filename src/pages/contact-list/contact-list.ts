@@ -33,7 +33,7 @@ export class ContactListPage {
 
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     this.contactProvider.getRemote().then((contacts: Array<any>) => {
       this.contacts = contacts;
       this.contactsFiltered = contacts;

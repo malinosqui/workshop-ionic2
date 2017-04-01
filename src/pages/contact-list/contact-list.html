@@ -25,7 +25,7 @@
         <ion-badge item-right color="danger" *ngIf="!contact.active">INATIVO</ion-badge>
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>
         <ion-avatar item-left>
-          <img [src]="contact.avatar">
+          <img [src]="contact.avatar || 'assets/placeholder-user.png'">
         </ion-avatar>
         <h2>{{contact.name}}</h2>
         <h3>{{contact.email}}</h3>

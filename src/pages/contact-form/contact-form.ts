@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { NetworkProvider } from '../../providers/network-provider';
+import { ContactProvider } from '../../providers/contact-provider';
 
 /*
   Generated class for the ContactForm page.
@@ -13,11 +15,17 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ContactFormPage {
   contact: any = {};
-  
-  constructor(public navCtrl: NavController, public navParams: NavParams) { }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public networkProvider: NetworkProvider, public contactProvider: ContactProvider) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactFormPage');
+  }
+
+  save() {
+    this.contactProvider.saveRemote(this.contact);
+    this.navCtrl.pop();
   }
 
 }
