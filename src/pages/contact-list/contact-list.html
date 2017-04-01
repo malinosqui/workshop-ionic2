@@ -17,9 +17,9 @@
 
 
 <ion-content>
-  <ion-searchbar placeholder="Digite o nome para pesquisar" *ngIf="contacts.length > 0" ></ion-searchbar>
+  <ion-searchbar placeholder="Digite o nome para pesquisar" *ngIf="contacts.length > 0" (ionInput)="searchContacts($event)"></ion-searchbar>
   <ion-list>
-    <ion-item-sliding *ngFor="let contact of contacts">
+    <ion-item-sliding *ngFor="let contact of contactsFiltered">
       <ion-item>
         <ion-badge item-right color="success" *ngIf="contact.active">ATIVO</ion-badge>
         <ion-badge item-right color="danger" *ngIf="!contact.active">INATIVO</ion-badge>
@@ -31,7 +31,7 @@
         <h3>{{contact.email}}</h3>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="remove(contact)">
         <ion-icon name="trash"></ion-icon>
         Remover
       </button>
