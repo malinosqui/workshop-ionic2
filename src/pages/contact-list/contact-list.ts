@@ -56,7 +56,7 @@ export class ContactListPage {
     let val = ev.target.value;
 
     if (val && val.trim() != '') {
-      this.contactsFiltered = this.contactsFiltered.filter((item: any) => {
+      this.contactsFiltered = this.contacts.filter((item: any) => {
         return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     } else {
