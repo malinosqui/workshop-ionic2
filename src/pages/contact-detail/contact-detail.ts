@@ -12,7 +12,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'contact-detail.html'
 })
 export class ContactDetailPage {
-  contact: any = { name: 'João Paulo', email: 'joao@a.com', number: '(14) 99211-9227', birthDate: '30/02/1985' };
+  contact: any = { name: 'João Paulo', email: 'joao@a.com', number: '(14) 99211-9227', birthDate: '1995-12-30' };
 
   constructor(public navCtrl: NavController, public navParams: NavParams) { }
 
