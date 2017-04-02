@@ -20,7 +20,7 @@ export class ContactFormPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public networkProvider: NetworkProvider, public contactProvider: ContactProvider,
     public camera: Camera, public actionSheetCtrl: ActionSheetController) {
-    this.navParams.get('contact');
+    this.contact = this.navParams.get('contact');
   }
 
   save() {
