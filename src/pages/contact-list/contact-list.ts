@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, Platform } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
+import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { ContactFormPage } from '../contact-form/contact-form'
 import { ContactDetailPage } from '../contact-detail/contact-detail'
 import { NetworkProvider } from '../../providers/network-provider';

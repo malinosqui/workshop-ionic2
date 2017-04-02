@@ -9,7 +9,7 @@
     <ion-title>Novo contato</ion-title>
     <ion-buttons end>
       <button ion-button (click)="save()">
-        SALVAR
+        Salvar
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -19,8 +19,10 @@
 <ion-content>
   <ion-list>
     <ion-item class="img-item">
-      <img [src]="contact.avatar || 'assets/placeholder-user.png'" alt="Foto de perfil">
-      <button ion-button clear>Adicionar foto</button>
+      <div class="img-container">
+        <img [src]="contact.avatar || 'assets/placeholder-user.png'" alt="Foto de perfil">
+      </div>
+      <button ion-button outline (click)="getAvatar()">{{contact.avatar ? 'Trocar foto' : 'Adicionar foto'}}</button>
     </ion-item>
     <ion-item>
       <ion-label stacked>Nome completo</ion-label>

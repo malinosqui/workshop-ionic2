@@ -4,6 +4,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { Network } from '@ionic-native/network';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactListPage } from '../pages/contact-list/contact-list';
@@ -43,7 +44,8 @@ import { ParallaxHeader } from '../components/parallax-header/parallax-header';
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     NetworkProvider,
     ContactProvider,
-    Network
+    Network,
+    Camera
   ]
 })
 export class AppModule { }
