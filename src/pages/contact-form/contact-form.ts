@@ -19,7 +19,9 @@ export class ContactFormPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public networkProvider: NetworkProvider, public contactProvider: ContactProvider,
-    public camera: Camera, public actionSheetCtrl: ActionSheetController) { }
+    public camera: Camera, public actionSheetCtrl: ActionSheetController) {
+    this.navParams.get('contact');
+  }
 
   save() {
     this.contactProvider.saveRemote(this.contact);
@@ -61,13 +63,13 @@ export class ContactFormPage {
   getImageFromGallery() {
     return new Promise((resolve, error) => {
       let options = {
-        quality: 100,
+        quality: 50,
         destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
         sourceType: this.camera.PictureSourceType.SAVEDPHOTOALBUM,
-        targetWidth: 140,
-        targetHeight: 140
+        targetWidth: 240,
+        targetHeight: 240
       }
 
       this.camera.getPicture(options).then((imageData) => {
@@ -81,11 +83,13 @@ export class ContactFormPage {
   getImageFromCamera() {
     return new Promise((resolve, error) => {
       let options = {
-        quality: 100,
+        quality: 50,
         destinationType: this.camera.DestinationType.DATA_URL,
         encodingType: this.camera.EncodingType.JPEG,
         mediaType: this.camera.MediaType.PICTURE,
-        sourceType: this.camera.PictureSourceType.CAMERA
+        sourceType: this.camera.PictureSourceType.CAMERA,
+        targetWidth: 240,
+        targetHeight: 240
       }
 
       this.camera.getPicture(options).then((imageData) => {

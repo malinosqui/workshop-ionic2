@@ -9,11 +9,17 @@ page-contact-detail {
   }
   .img-item {
     text-align: center;
-    img {
-      margin-top: 8vh;
+    padding-top: 8vh;
+    .img-container {
       border-radius: 50%;
       border: 4px solid #41506B;
       width: 140px;
+      height: 140px;
+      overflow: hidden;
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #fff;
     }
   }
 }
