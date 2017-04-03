@@ -57,7 +57,7 @@ export class NetworkProvider {
   getState(): Promise<ConnectionStatus> {
     return new Promise((resolve) => {
       this.storage.get('state').then((state) => {
-        return state || navigator.onLine ? ConnectionStatus.Online : ConnectionStatus.Offline;
+         resolve(state || navigator.onLine ? ConnectionStatus.Online : ConnectionStatus.Offline);
       }).catch((err) => {
         console.log('erro ao buscar estado da conexão:', err);
         resolve(navigator.onLine ? ConnectionStatus.Online : ConnectionStatus.Offline)

@@ -7,7 +7,7 @@
 <ion-header>
   <ion-navbar color="primary">
     <ion-title>Lista de contatos</ion-title>
-    <ion-buttons end >
+    <ion-buttons end>
       <button ion-button (click)="goToForm()">
         Novo
       </button>
@@ -17,10 +17,13 @@
 
 
 <ion-content>
+  <div class="offline" *ngIf="offline">
+    <span>Você está Offline - Fique tranquilo suas informações estão sendo salvas.</span>
+  </div>
   <ion-searchbar placeholder="Digite o nome para pesquisar" *ngIf="contacts.length > 0" (ionInput)="searchContacts($event)"></ion-searchbar>
   <ion-list>
     <ion-item-sliding *ngFor="let contact of contactsFiltered">
-      <ion-item>
+      <ion-item [class.unsync]="contact.unsync">
         <ion-badge item-right color="success" *ngIf="contact.active">ATIVO</ion-badge>
         <ion-badge item-right color="danger" *ngIf="!contact.active">INATIVO</ion-badge>
         <ion-icon name="ios-arrow-forward" item-right></ion-icon>
@@ -29,9 +32,10 @@
         </ion-avatar>
         <h2>{{contact.name}}</h2>
         <h3>{{contact.email}}</h3>
+        <p *ngIf="contact.unsync">(pendente)</p>
       </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="danger" (click)="remove(contact)">
+        <button ion-button color="danger" (click)="remove(contact)" *ngIf="!offline">
         <ion-icon name="trash"></ion-icon>
         Remover
       </button>

@@ -5,4 +5,17 @@ page-contact-list {
       width: 100px;
     }
   }
+  .offline {
+    text-align: center;
+    padding: 3px;
+    background-color: #EF2D56;
+
+    span {
+      color: #fff;
+      font-weight: bold;
+    }
+  }
+  .unsync{
+    color: #929292;
+  }
 }

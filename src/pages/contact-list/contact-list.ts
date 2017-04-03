@@ -4,6 +4,7 @@ import { ContactFormPage } from '../contact-form/contact-form'
 import { ContactDetailPage } from '../contact-detail/contact-detail'
 import { NetworkProvider } from '../../providers/network-provider';
 import { ContactProvider } from '../../providers/contact-provider';
+import { ConnectionStatus } from '../../enums/ConnectionStatus';
 
 /*
   Generated class for the ContactList page.
@@ -19,6 +20,7 @@ export class ContactListPage {
   isWeb: Boolean = false;
   contacts: Array<any> = [];
   contactsFiltered: Array<any> = [];
+  offline: Boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public platform: Platform, public networkProvider: NetworkProvider,
@@ -30,17 +32,35 @@ export class ContactListPage {
       this.isWeb = !platform.is('cordova');
     });
 
+    networkProvider.getState().then((state: ConnectionStatus) => {
+      this.offline = state == ConnectionStatus.Offline ? true : false;
+    })
+
+    networkProvider.connectSubscription.subscribe(() => {
+      this.offline = false;
+      this.sync();
+    });
+
+    networkProvider.disconnectSubscription.subscribe(() => {
+      this.offline = true;
+    });
   }
 
   ionViewDidEnter() {
-    this.contactProvider.getRemote().then((contacts: Array<any>) => {
+    this.get();
+  }
+
+  get() {
+    this.contactProvider.get().then((contacts: Array<any>) => {
       this.contacts = contacts;
       this.contactsFiltered = contacts;
     });
   }
 
   sync() {
-
+    this.contactProvider.syncWithRemote().then(() => {
+      this.get();
+    });
   }
 
   goToForm(contact) {
@@ -81,12 +101,8 @@ export class ContactListPage {
           text: 'Remover',
           handler: () => {
             this.contactProvider.removeRemote(contact.id).then(() => {
-
-              const contactsIndex = this.contacts.indexOf(contact);
-              const contactsFilteredIndex = this.contacts.indexOf(contact);
-
-              this.contacts.splice(contactsIndex, 1);
-              this.contactsFiltered.splice(contactsFilteredIndex, 1);
+              this.contacts = this.contacts.filter(element => element.id !== contact.id);
+              this.contactsFiltered = this.contacts.filter(element => element.id !== contact.id);
             });
           }
         }
