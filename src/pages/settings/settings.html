@@ -17,9 +17,16 @@
   <ion-list>
     <ion-item>
       Resetar dados
-      <button ion-button outline item-right icon-left (click)="reset()">
+      <button ion-button outline item-right icon-left (click)="confirmReset()">
       <ion-icon name="trash"></ion-icon>
       Resetar
+    </button>
+    </ion-item>
+    <ion-item>
+      Desconectar da conta
+      <button ion-button outline item-right icon-left (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+      Sair
     </button>
     </ion-item>
   </ion-list>
