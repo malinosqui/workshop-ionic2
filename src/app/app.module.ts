@@ -10,6 +10,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactListPage } from '../pages/contact-list/contact-list';
 import { ContactFormPage } from '../pages/contact-form/contact-form';
 import { ContactDetailPage } from '../pages/contact-detail/contact-detail';
+import { SettingsPage } from '../pages/settings/settings';
 import { TabsPage } from '../pages/tabs/tabs';
 import { NetworkProvider } from '../providers/network-provider';
 import { ContactProvider } from '../providers/contact-provider';
@@ -23,6 +24,7 @@ import { ParallaxHeader } from '../components/parallax-header/parallax-header';
     ContactFormPage,
     ContactDetailPage,
     ParallaxHeader,
+    SettingsPage,
     TabsPage
   ],
   imports: [
@@ -36,6 +38,7 @@ import { ParallaxHeader } from '../components/parallax-header/parallax-header';
     ContactListPage,
     ContactFormPage,
     ContactDetailPage,
+    SettingsPage,
     TabsPage
   ],
   providers: [

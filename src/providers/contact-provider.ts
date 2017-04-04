@@ -15,7 +15,7 @@ import _ from 'lodash';
 
 @Injectable()
 export class ContactProvider {
-  API_ENDPOINT: String = 'http://192.168.1.108:3000';
+  API_ENDPOINT: String = 'http://192.168.1.102:3000';
   headers: any = { 'Content-Type': 'application/json' };
 
   constructor(public http: Http, public storage: Storage,
@@ -183,7 +183,7 @@ export class ContactProvider {
 
   saveManyRemote(contacts) {
     return new Promise(resolve => {
-      this.http.post(this.API_ENDPOINT + '/contactUpdateMany', JSON.stringify(contacts), { headers: this.headers })
+      this.http.post(this.API_ENDPOINT + '/contactSaveMany', JSON.stringify(contacts), { headers: this.headers })
         .map(res => res.json())
         .subscribe(data => {
           resolve(data);

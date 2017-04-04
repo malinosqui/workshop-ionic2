@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ApplicationRef } from '@angular/core';
 import { NavController, NavParams, Platform, AlertController } from 'ionic-angular';
 import { ContactFormPage } from '../contact-form/contact-form'
 import { ContactDetailPage } from '../contact-detail/contact-detail'
@@ -24,7 +24,8 @@ export class ContactListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public platform: Platform, public networkProvider: NetworkProvider,
-    public contactProvider: ContactProvider, public alertCtrl: AlertController) {
+    public contactProvider: ContactProvider, public alertCtrl: AlertController,
+    public applicationRef: ApplicationRef) {
 
     // Verifica se a plataforma é mobile
     // Utilizada na regra de mostrar o botão de cadastrar apenas no desktop
@@ -43,6 +44,7 @@ export class ContactListPage {
 
     networkProvider.disconnectSubscription.subscribe(() => {
       this.offline = true;
+      this.applicationRef.tick();
     });
   }
 
@@ -54,12 +56,14 @@ export class ContactListPage {
     this.contactProvider.get().then((contacts: Array<any>) => {
       this.contacts = contacts;
       this.contactsFiltered = contacts;
+      this.applicationRef.tick();      
     });
   }
 
   sync() {
     this.contactProvider.syncWithRemote().then(() => {
       this.get();
+      this.applicationRef.tick();      
     });
   }
 
